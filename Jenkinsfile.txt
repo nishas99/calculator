@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    tools {
+        nodejs 'jenkins-node'
+    }
+    stages {
+        
+        stage('Git') {
+            steps {
+                git 'https://github.com/nishas99/calculator.git/'
+            }
+    }
+     
+        stage('Initialize') {
+            steps {
+                sh '''
+                    npm install
+                '''
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                sh '''
+                    npm run test -- --watchAll=false
+                '''
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '''
+                    npm run build
+                '''
+            }
+        }
+    }
+}
