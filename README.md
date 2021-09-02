@@ -26,4 +26,4 @@ Usage
 `npm start`
 
 This is a new change added.
-New Change made for pipeline.
+New Change made for the pipeline.
